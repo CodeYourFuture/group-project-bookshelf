@@ -41,6 +41,24 @@ function processBooks(booksJSON) {
 	});
 
 	document.body.appendChild(ulTag); // append <ul> to the body
+
+	/*-------------------- Moving elements ---------------------------*/
+
+	function moveUp(id) {
+		console.log("Move up" + " " + id);
+	}
+
+	function moveDown(id) {
+		console.log("Move down" + " " + id);
+	}
+
+	document.querySelector("ul").addEventListener("click", function(event){
+		if(event.target.textContent === "⬆"){
+			moveUp(event.target.parentElement.id);
+		} else if(event.target.textContent === "⬇"){
+			moveDown(event.target.parentElement.id);
+		}
+	});
 }
 
 function removeBtn() {
@@ -49,10 +67,6 @@ function removeBtn() {
 	button.remove();
 }
 
-function moveUp(id) {
-	console.log("Move up" + " " + id);
-}
 
-function moveDown(id) {
-	console.log("Move down" + " " + id);
-}
+
+
