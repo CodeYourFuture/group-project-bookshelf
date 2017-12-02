@@ -11,11 +11,7 @@ const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-pr
 fetch(booksJSON)
     .then(response => response.json())
     .then(processBooks)
-     .then(removeBtn)
-    .then(books => {
-        /* TODO: create the bookshelf */
-        console.log(books)
-    })
+    .then(removeBtn)
 }
 
 function processBooks(booksJSON) {
@@ -42,6 +38,7 @@ function processBooks(booksJSON) {
 
 	});
 	document.body.appendChild(newUl);
+
 }
 		//remove button 
 function removeBtn() {
