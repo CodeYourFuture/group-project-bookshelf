@@ -23,7 +23,7 @@ function processBooks(booksJSON) {
     document.body.appendChild(ulTag);
     booksJSON.forEach(function(booksItem) {
         var liTag = document.createElement('li');
-        var textOfLi = document.createTextNode(booksItem.author + booksItem.title)
+        var textOfLi = document.createTextNode(booksItem.title + ' by ' + booksItem.author)
         liTag.setAttribute('id', booksItem.id);
         liTag.appendChild(textOfLi);
         ulTag.appendChild(liTag);
