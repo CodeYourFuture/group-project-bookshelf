@@ -34,7 +34,7 @@ function processBooks(booksJSON) {
 		
 		newLiElement.appendChild(upButton); // append up button to <li> element
 		newLiElement.appendChild(downButton); // append down button to <li> element
-		var liText = document.createTextNode(" - " + el.title); // create text in the <li> from JSON
+		var liText = document.createTextNode(" - " + el.title + " by " + el.author); // create text in the <li> from JSON
 		newLiElement.appendChild(liText); // apppend text to the <li>
 
 		ulTag.appendChild(newLiElement); // append <li> to <ul>
@@ -46,10 +46,18 @@ function processBooks(booksJSON) {
 
 	function moveUp(id) {
 		console.log("Move up" + " " + id);
+
+		var listItems = document.querySelectorAll("li");
+		for (var i = 0; i < listItems.length; i++) {
+			listItems[i].onclick = function() {this.parentNode.removeChild(this);}
+		}
+		// this.parentNode.removeChild(this);
 	}
 
 	function moveDown(id) {
 		console.log("Move down" + " " + id);
+		// this.parentNode.removeChild(this);
+
 	}
 
 	document.querySelector("ul").addEventListener("click", function(event){
