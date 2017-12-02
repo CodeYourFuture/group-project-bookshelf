@@ -13,11 +13,16 @@ function fetchBooks(){
     const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
     fetch(booksJSON)
         .then(response => response.json())
-        .then(processBooks)}
-            
-            
+        .then(processBooks)
+        .then(removeBtn)
+        } 
+    var newUl = document.createElement("UL");      
+    
+    
+
+
 function processBooks(booksJSON){
-    var newUl = document.createElement("UL");
+    
     newUl.setAttribute("id", "myUL");
     document.body.appendChild(newUl);
             
@@ -42,9 +47,48 @@ function processBooks(booksJSON){
     newLi.appendChild(button2);
     newLi.appendChild(t);
     newUl.appendChild(newLi);
-
                 })
             }
-        
 
-       
+function removeBtn(){
+    var btt = document.getElementById('fetch-books-btn');
+    btt.addEventListener("click", fetchBooks);
+    btt.remove();
+}
+
+
+function moveUp(id){
+    console.log(moveUp.id);
+}
+
+function moveDown(id){
+    console.log(moveDown.id);
+}
+
+newUl.addEventListener('click', function(event){
+    if(event.target.textContent === '⬆'){
+        moveUp(event.target.parentElement.id);
+    }
+    if(event.target.textContent === '⬇'){
+        moveDown(event.target.parentElement.id);
+    }
+})
+
+
+
+
+// Implement the moveUp and moveDown buttons with what 
+// you have learnt from the lesson. You will need to use the insertBefore method.
+
+
+
+
+
+
+
+
+
+
+
+
+
