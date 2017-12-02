@@ -12,7 +12,8 @@ function fetchBooks() {
     const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
     fetch(booksJSON) // go and retrieve all the data I need 
         .then(response => response.json()) // convert these data to string
-        .then(books => processBooks(books)) //used this data as value for processBook   
+        .then(books => processBooks(books)) //used this data as value for processBook 
+        .then(() => removeBtn()) //  ==> Removing the button
 }
 
 // Creating the bookshelf
@@ -27,6 +28,10 @@ function processBooks(booksJSON) {
         liTag.appendChild(textOfLi);
         ulTag.appendChild(liTag);
     });
+}
 
-    ulTag.addEventListener('click')
+// ## Removing the button
+function removeBtn() {
+    document.getElementById('fetch-books-btn').removeEventListener('click', fetchBooks);
+    document.getElementById('fetch-books-btn').remove()
 }
