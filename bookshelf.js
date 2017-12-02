@@ -64,14 +64,14 @@ window.bookshelf = (function() {
 			})
 		}
 	
-	return {
-		init: createBtn,
-		removeBtn,
-		fetchBooks,
-		moveUp,
-		moveDown,
-		processBooks
-	}
+	// return {
+	// 	init: createBtn,
+	// 	removeBtn,
+	// 	fetchBooks,
+	// 	moveUp,
+	// 	moveDown,
+	// 	processBooks
+	// }
 }())
 
 
