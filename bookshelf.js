@@ -1,46 +1,46 @@
 /* Button create and click listener */
-var button = document.createElement("button"); // create the button
-button.setAttribute("id", "fetch-books-btn"); // set id attribute to the button
-var buttonText = document.createTextNode("Fetch Books"); //create the button text
-button.appendChild(buttonText); // apply buttonText to Button tag
-button.addEventListener("click", fetchBooks); // click event trigger
-document.body.appendChild(button); //append button to the body element
+var button = document.createElement("button");
+button.setAttribute("id", "fetch-books-btn");
+var buttonText = document.createTextNode("Fetch Books");
+button.appendChild(buttonText);
+button.addEventListener("click", fetchBooks);
+document.body.appendChild(button);
 
 /* fetchBooks function */
 
 function fetchBooks() {
-	const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
-	fetch(booksJSON)
+	const books = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
+	fetch(books)
     .then(response => response.json())
-    .then(processBooks) // call the processBooks function
-    .then(removeBtn) // call the removeBtn function
+    .then(processBooks)
+    .then(removeBtn)
 }
 
-function processBooks(booksJSON) {
-	var ulTag = document.createElement("ul"); // create <ul> Tag
+function processBooks(books) {
+	var ulTag = document.createElement("ul");
 
-	// This forEach loop creates several li tags
-	booksJSON.forEach(function(el){
-		var newLiElement = document.createElement("li"); // create <li> element
-		newLiElement.setAttribute("id", el.id); // set id attribute to each <li>
+
+	books.forEach(function(el){
+		var newLiElement = document.createElement("li");
+		newLiElement.setAttribute("id", el.id);
 		
-		var upButton = document.createElement("button"); //
-		var upButtonText = document.createTextNode("⬆"); // CREATE BUTTONS WITH ARROWS UP
-		upButton.appendChild(upButtonText);							//
+		var upButton = document.createElement("button");
+		var upButtonText = document.createTextNode("⬆");
+		upButton.appendChild(upButtonText);
 
-		var downButton = document.createElement("button"); //
-		var downButtonText = document.createTextNode("⬇"); // CREATE BUTTONS WITH ARROWS DOWN
-		downButton.appendChild(downButtonText);						//
+		var downButton = document.createElement("button");
+		var downButtonText = document.createTextNode("⬇");
+		downButton.appendChild(downButtonText);
 		
-		newLiElement.appendChild(upButton); // append up button to <li> element
-		newLiElement.appendChild(downButton); // append down button to <li> element
-		var liText = document.createTextNode(" - " + el.title + " by " + el.author); // create text in the <li> from JSON
-		newLiElement.appendChild(liText); // apppend text to the <li>
+		newLiElement.appendChild(upButton);
+		newLiElement.appendChild(downButton);
+		var liText = document.createTextNode(" - " + el.title + " by " + el.author);
+		newLiElement.appendChild(liText);
 
-		ulTag.appendChild(newLiElement); // append <li> to <ul>
+		ulTag.appendChild(newLiElement);
 	});
 
-	document.body.appendChild(ulTag); // append <ul> to the body
+	document.body.appendChild(ulTag);
 
 	/*-------------------- Moving elements ---------------------------*/
 
@@ -70,7 +70,7 @@ function processBooks(booksJSON) {
 }
 
 function removeBtn() {
-	var button = document.getElementById("fetch-books-btn"); // get the button with "fetch-books-btn" id
+	var button = document.getElementById("fetch-books-btn");
 	button.removeEventListener("click", fetchBooks);
 	button.remove();
 }
