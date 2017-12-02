@@ -43,12 +43,6 @@ var removeBtn = () => {
 }
 
 // Function to add up and down arrows
-var upArrow = document.createElement('button');
-upArrow.innerHTML = '&uarr;';
-
-var downArrow = document.createElement('button');
-downArrow.innerHTML = '&darr;';
-
 function addArrows() {
     var listNodes = list.childNodes;
     var nodesArray = Array.prototype.slice.call(listNodes);
