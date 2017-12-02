@@ -1,7 +1,7 @@
 window.bookshelf = (function() {
 	var buttonNode = document.createElement("button");
 	buttonNode.setAttribute("id", 'fetch-books-btn');
-	var textNode = document.createTextNode("fetch books");
+	var textNode = document.createTextNode("Fetch books");
 	buttonNode.appendChild(textNode);
 	buttonNode.addEventListener("click", fetchBooks);
 	var body = document.getElementsByTagName("body")[0];
@@ -52,7 +52,7 @@ window.bookshelf = (function() {
                      
 					}
 					function moveDown(){
-					    console.log(`move down ${xz.id}`);
+                        console.log(`move down ${xz.id}`);
                     }
                 
 				})
