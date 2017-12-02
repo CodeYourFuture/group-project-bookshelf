@@ -21,7 +21,7 @@ function processBooks(books) {
                 btnup.appendChild(btnuptextNode)
                 btnup.addEventListener('click', moveUp)
                 liNode.appendChild(btnup)
-                
+
                 var btndown = document.createElement('button')
                 btndown.setAttribute('id', 'moveDown')
                 var btndowntextNode = document.createTextNode('⬇')
@@ -36,7 +36,7 @@ function processBooks(books) {
                         var x = document.getElementById("moveUp")
                         liNode.addEventListener('click', function(event) {
                                 var parent = event.target.parentNode;
-                                var n = (parent.getAttribute('id'))
+                                listNode.insertBefore(parent, listNode.childNodes[0]);   
                         })
                 }
 
@@ -44,7 +44,7 @@ function processBooks(books) {
                         var xd = document.getElementById("moveDown")
                         liNode.addEventListener('click', function(event) {
                                 var parent = event.target.parentNode;
-                                var nd = (parent.getAttribute('id'))
+                                listNode.insertBefore(parent, listNode.childNodes.nextSibling);
                         })
                 }
         })
