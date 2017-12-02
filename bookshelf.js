@@ -58,9 +58,8 @@ window.bookshelf = (function() {
 				})
             })
             .then(removeBtn => {
-				element = document.getElementById('fetch-books-btn');
-				element.removeEventListener("click", fetchBooks, false)
-				element.remove()
+                buttonNode.removeEventListener("click", fetchBooks, false)
+				buttonNode.remove();
 			})
 		}
 	
