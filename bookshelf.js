@@ -47,10 +47,10 @@ function processBooks(booksJSON) {
 	function moveUp(id) {
 		console.log("Move up" + " " + id);
 
-		var listItems = document.querySelectorAll("li");
-		for (var i = 0; i < listItems.length; i++) {
-			listItems[i].onclick = function() {this.parentNode.removeChild(this);}
-		}
+		// var listItems = document.querySelectorAll("li");
+		// for (var i = 0; i < listItems.length; i++) {
+		// 	listItems[i].onclick = function() {this.parentNode.removeChild(this);}
+		// }
 		// this.parentNode.removeChild(this);
 	}
 
