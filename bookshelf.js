@@ -33,5 +33,5 @@ function processBooks(booksJSON) {
 // ## Removing the button
 function removeBtn() {
     document.getElementById('fetch-books-btn').removeEventListener('click', fetchBooks);
-    document.getElementById('fetch-books-btn').remove()
+    document.body.removeChild(btn);
 }
