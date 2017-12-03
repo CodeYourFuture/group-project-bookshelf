@@ -44,16 +44,10 @@ window.bookshelf = (function() {
 
     // ## Removing the button
     function removeBtn() {
-        document.getElementById('fetch-books-btn').removeEventListener('click', fetchBooks);
-        document.body.removeChild(btn);
+        var btnRemove = document.getElementById('fetch-books-btn');
+        btnRemove.removeEventListener('click', fetchBooks);
+        document.body.removeChild(btnRemove);
     }
-
-    window.bookshelf = (function() {
-        /* our code */
-        return {
-            init: createBtn
-        }
-    }())
 
     return {
         init: createBtn,
@@ -63,4 +57,5 @@ window.bookshelf = (function() {
         moveDown,
         processBooks
     }
+
 }())
