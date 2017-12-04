@@ -16,6 +16,7 @@ function fetchBooks() {
         .then( processBooks )
         .then( removeBtn )
         .then( addArrows )
+        .then( processingBooks )
 }
 
 // processBooks function
@@ -47,16 +48,12 @@ function addArrows() {
     var listNodes = list.childNodes;
     var nodesArray = Array.prototype.slice.call(listNodes);
     
-    nodesArray.forEach(function(el, index, arr) {
+    nodesArray.forEach(function(el) {
         var upArrow = document.createElement('button');
-        upArrow.setAttribute('id', 'upArr');
+        var downArrow = document.createElement('button');
         var upArrText = document.createTextNode('↑');
+        var downArrText = document.createTextNode('↓');
         upArrow.appendChild(upArrText);
-        
-       var downArrow = document.createElement('button'),
-           downArrText = document.createTextNode('↓');
-        
-        downArrow.setAttribute('id', 'dwnArr');
         downArrow.appendChild(downArrText);
         el.insertBefore(upArrow, el.firstChild);
         el.insertBefore(downArrow, el.firstChild);
@@ -64,8 +61,40 @@ function addArrows() {
    
 }
 
-// organizing the list
 
+// processing the books
+const processingBooks = () => {
 
+list.addEventListener('click', (event) => {
+    var id = event.target.parentElement.id;
+   if(event.target.textContent === '↓') {
+       if( event.target.parentElement.id != '1' ) {
+         moveDown(id)
+       }
+   }
+   if(event.target.textContent === '↑') {
+       if( event.target.parentElement.id != 5 ) {
+         moveUp(id)
+       }
+      
+   }
+})
+
+}
+
+const moveUp = (id) => {
+    const clickedLi = document.getElementById(id)
+    var thisBook = clickedLi.childNodes[2].textContent 
+    clickedLi.childNodes[2].textContent = clickedLi.nextSibling.childNodes[2].textContent
+    clickedLi.nextSibling.childNodes[2].textContent = thisBook
+}
+
+const moveDown = (id) => {
+    const clickedLi = document.getElementById(id)
+    var thisBook = clickedLi.childNodes[2].textContent 
+    clickedLi.childNodes[2].textContent = clickedLi.previousSibling.childNodes[2].textContent
+    clickedLi.previousSibling.childNodes[2].textContent = thisBook
+
+}
 
 
