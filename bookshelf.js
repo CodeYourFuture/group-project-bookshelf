@@ -1,5 +1,5 @@
 
-
+window.bookshelf = (function() {
 var button = document.createElement('button');
 button.setAttribute("id", "fetch-books-btn");
 var textNode = document.createTextNode('Fetch Books');
@@ -85,3 +85,14 @@ function removeBtn(){
     btn.remove();
     
 }
+
+
+return {
+    init: createBtn,
+    removeBtn,
+    fetchBooks,
+    processBooks,
+    moveUp,
+    moveDown
+}
+}())
