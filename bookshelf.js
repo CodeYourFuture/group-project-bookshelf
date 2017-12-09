@@ -6,16 +6,16 @@ window.bookshelf = (function() {
         var textOfBtn = document.createTextNode('Fetch Books');
         btn.appendChild(textOfBtn);
         document.body.appendChild(btn);
-        btn.addEventListener('click', fetchBooks); //## Fetching the books data    
+        btn.addEventListener('click', fetchBooks); //  Wiring up the button
     }
-    //## Fetching the books data  
+    //## Fetching the books data    
+
     function fetchBooks() {
-        //    console.log('BOOKS');
         const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
-        fetch(booksJSON) // go and retrieve all the data I need 
-            .then(response => response.json()) // convert these data to string
-            .then(books => processBooks(books)) //used this data as value for processBook 
-            .then(() => removeBtn()) //  ==> Removing the button
+        fetch(booksJSON)
+            .then(response => response.json())
+            .then(books => processBooks(books))
+            .then(() => removeBtn())
     }
 
     // Creating the bookshelf
@@ -40,13 +40,44 @@ window.bookshelf = (function() {
             liTag.appendChild(textOfLi);
             ulTag.appendChild(liTag);
         });
+        ulTag.addEventListener('click', function(event) {
+            if (event.target.textContent === '⬆') {
+                moveUp(event.target.parentElement.id)
+            } else if (event.target.innerHTML === '⬇') {
+                moveDown(event.target.parentElement.id)
+            }
+        })
     }
 
     // ## Removing the button
+
     function removeBtn() {
         var btnRemove = document.getElementById('fetch-books-btn');
         btnRemove.removeEventListener('click', fetchBooks);
         document.body.removeChild(btnRemove);
+    }
+
+    function moveUp(id) {
+        var currentLi = document.getElementById(id);
+        var beforeCurrentLi = currentLi.previousSibling;
+        if (beforeCurrentLi === null) {
+            return undefined;
+        } else {
+            var parentOfCurrentLi = currentLi.parentNode;
+            var removeCurrentLi = parentOfCurrentLi.removeChild(currentLi)
+            parentOfCurrentLi.insertBefore(removeCurrentLi, beforeCurrentLi)
+        }
+    }
+
+    function moveDown(id) {
+        var selected = document.getElementById(id);
+        var afterSelected = selected.nextSibling;
+        if (afterSelected === null) {
+            return undefined;
+        } else {
+            var parent = selected.parentNode;
+            parent.insertBefore(selected, afterSelected.nextSibling);
+        }
     }
 
     return {
@@ -58,4 +89,4 @@ window.bookshelf = (function() {
         processBooks
     }
 
-}())
+})()
