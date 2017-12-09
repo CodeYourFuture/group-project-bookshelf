@@ -1,4 +1,4 @@
-`# Bookshelf Project
+# Bookshelf Project
 
 In this small project we will create a bookshelf that we can interact with.
 
