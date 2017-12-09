@@ -35,7 +35,7 @@ window.bookshelf = (function() {
             liTag.appendChild(btnUp);
             liTag.appendChild(btnDown);
 
-            var textOfLi = document.createTextNode(booksItem.title + ' by ' + booksItem.author)
+            var textOfLi = document.createTextNode(' - ' + booksItem.title + ' by ' + booksItem.author)
             liTag.setAttribute('id', booksItem.id);
             liTag.appendChild(textOfLi);
             ulTag.appendChild(liTag);
