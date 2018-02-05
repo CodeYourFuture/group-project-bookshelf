@@ -53,7 +53,7 @@ function moveUp(id) {
 }
 function moveDown(id) {
   console.log("move down" + id)
-  var itm=document.getElementById("id")
+  var itm=document.getElementById(id)
   var itmTex=itm.textContent 
   itmTex = itm.parentElement.textContent;
 } 
