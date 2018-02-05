@@ -10,13 +10,11 @@ function fetchBooks() {
   fetch(booksJSON)
     .then(response => response.json())
     .then(processBooks)
-    .then(removeBtn)
-    .then(myInlineFunc);
+    .then(removeBtn);
 }
 
 function processBooks(booksJSON) {
   var list = document.createElement("ul");
-  list.addEventListener("click", myInlineFunc);
   
   booksJSON.forEach(function (item) {
     var listItem = document.createElement('li');
@@ -35,9 +33,12 @@ function processBooks(booksJSON) {
     var texNode = document.createTextNode(item['title'] + " by " + item['author']);
     listItem.appendChild(texNode);
     list.appendChild(listItem);
+    listItem.addEventListener("click", myInlineFunc);
   })
-  document.body.prepend(list);
+  document.body.appendChild(list);
+  
 }
+
 function removeBtn() {
   var rem = document.getElementById("fetch-books-btn")
   rem.removeEventListener("click", fetchBooks);
@@ -65,7 +66,7 @@ function myInlineFunc(event) {
   } else
     moveDown(event.target.parentElement.id);
 }
-
+/* 
 var elements = document.getElementsByTagName("button");
 console.log(elements)
 elements.addEventListener("click", becomeBlue)
@@ -74,4 +75,11 @@ function becomeBlue(){
     element.style.backgroundColor = "blue";
   });
 }
-document.getElementById("button").style.background='#000000'
+document.getElementById("button").style.background='#000000' */
+
+var elem=document.getElementsByTagName('button')
+console.log(elem)
+elem.addEventListener("click",buttonFunction);
+function buttonFunction(btn) {
+  btn.style.backgroundColor = "blue";
+}
