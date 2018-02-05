@@ -17,24 +17,26 @@ function fetchBooks() {
 function processBooks(booksJSON) {
   var list = document.createElement("ul");
   list.addEventListener("click", myInlineFunc);
+  
   booksJSON.forEach(function (item) {
     var listItem = document.createElement('li');
-    //listItem.addEventListener("click", myInlineFunc);
     listItem.setAttribute('id', item['id']);
+
     var upButton = document.createElement("button");
     var texUpButton = document.createTextNode("◭");
     upButton.appendChild(texUpButton);
     listItem.appendChild(upButton);
+
     var downButton = document.createElement("button");
     var texDownButton = document.createTextNode("⧩");
     downButton.appendChild(texDownButton);
     listItem.appendChild(downButton);
+
     var texNode = document.createTextNode(item['title'] + " by " + item['author']);
     listItem.appendChild(texNode);
     list.appendChild(listItem);
-    document.body.appendChild(list);
   })
-  //document.body.appendChild(list);
+  document.body.prepend(list);
 }
 function removeBtn() {
   var rem = document.getElementById("fetch-books-btn")
@@ -56,6 +58,8 @@ function moveDown(id) {
 } 
 
 function myInlineFunc(event) {
+  console.log('myInlineFunc called');
+  console.log('event is: ', event);
   if (event.target.textContent === "◭") {
     moveUp(event.target.parentElement.id);
   } else
@@ -70,3 +74,4 @@ function becomeBlue(){
     element.style.backgroundColor = "blue";
   });
 }
+document.getElementById("button").style.background='#000000'
