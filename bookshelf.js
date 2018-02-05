@@ -49,7 +49,7 @@ function removeBtn() {
 
 function moveUp(id) {
   console.log("move up" + id)
-  var itm=document.getElementById("id")
+  var itm=document.getElementById(id)
   var itmTex=itm.textContent 
   itmTex = itm.parentElement.textContent;
 }
