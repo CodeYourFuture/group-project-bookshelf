@@ -15,16 +15,11 @@ function fetchBooks() {
 }
 
 function processBooks(booksJSON) {
-  //var list=document.createElement("ul");
-  /* var listItem=document.createElement("li");
-  list.appendChild(listItem); */
   var list = document.createElement("ul");
-  list.addEventListener("click", myInlineFunc)
+  list.addEventListener("click", myInlineFunc);
   booksJSON.forEach(function (item) {
-    /*  var listElement = '';
-     listElement += '<li>' + item['title'] + "by" + item['author'] + '</li>';
-     listElement.setAttribute('id',item['id']); */
     var listItem = document.createElement('li');
+    //listItem.addEventListener("click", myInlineFunc);
     listItem.setAttribute('id', item['id']);
     var upButton = document.createElement("button");
     var texUpButton = document.createTextNode("◭");
@@ -65,4 +60,13 @@ function myInlineFunc(event) {
     moveUp(event.target.parentElement.id);
   } else
     moveDown(event.target.parentElement.id);
+}
+
+var elements = document.getElementsByTagName("button");
+console.log(elements)
+elements.addEventListener("click", becomeBlue)
+function becomeBlue(){
+  Array.from(elements).forEach(function(element) {
+    element.style.backgroundColor = "blue";
+  });
 }
