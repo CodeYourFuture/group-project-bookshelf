@@ -10,16 +10,23 @@ function fetchBooks() {
     fetch(booksJSON)
         .then(response => response.json())
         .then(processBooks)
+        .then(removeBtn)
 };
 
 function processBooks(booksJSON) {
-var ul = document.createElement('ul');
-booksJSON.forEach(function(item) {
-    var li = document.createElement("li");
-    li.setAttribute('id', item['id']);
-    var textNode = document.createTextNode(item['title'] + ' by ' + item['author'])
-    li.appendChild(textNode);
-    ul.appendChild(li);
-});
-document.body.appendChild(ul);
+    var ul = document.createElement('ul');
+    booksJSON.forEach(function (item) {
+        var li = document.createElement("li");
+        li.setAttribute('id', item['id']);
+        var textNode = document.createTextNode(item['title'] + ' by ' + item['author'])
+        li.appendChild(textNode);
+        ul.appendChild(li);
+    });
+    document.body.appendChild(ul);
+};
+
+function removeBtn() {
+    var btn = document.getElementById('fetch-books-btn');
+    btn.removeEventListener('click', fetchBooks);
+    btn.remove();
 };
