@@ -14,7 +14,7 @@ We will also introduce two patterns for structuring our code.
 
 ## Creating a button
 
-1. In our `bookshelf.js` file create a button using the [`createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) method.
+1. In our `bookshelf.js` file create a button using the [`createElement`](createElementhttps://developer.mozilla.org/en-US/docs/Web/API/Document/) method.
 2. Set the button's id attribute to `fetch-books-btn` using the [`setAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute) method.
 3. Create a text node with the text `Fetch Books` using the [`createTextNode`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode) method.
 4. Append the text node to the button using the [`appendChild`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method.
