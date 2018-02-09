@@ -47,15 +47,16 @@ function removeBtn() {
 
 function moveUp(id) {
   console.log("move up" + id)
-  var itm=document.getElementById(id)
-  var itmTex=itm.textContent 
-  itmTex = itm.parentElement.textContent;
+  
+  
 }
 function moveDown(id) {
   console.log("move down" + id)
-  var itm=document.getElementById(id)
-  var itmTex=itm.textContent 
-  itmTex = itm.parentElement.textContent;
+  var itm=document.getElementById(id);
+  var itmNext=document.getElementById(id).previousElementSibling.innerHTML
+  itm.innerHTML=document.getElementById(id).nextElementSibling.innerHTML;
+  
+  itmNext.innerHTML=itm.innerHTML
 } 
 
 function myInlineFunc(event) {
