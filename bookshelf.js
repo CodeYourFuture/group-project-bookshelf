@@ -15,7 +15,6 @@ function fetchBooks() {
 
 function processBooks(booksJSON) {
     var ul = document.createElement('ul');
-    ul.setAttribute('id', 'list');
     booksJSON.forEach(function (item) {
         var li = document.createElement("li");
         li.setAttribute('id', item['id']);
@@ -43,24 +42,24 @@ function removeBtn() {
 
 function moveUp(id) {
     if (id === '1') { return }
-    var node = document.getElementById('list');
+    var node = document.getElementsByTagName('ul');
     var target = document.getElementById(id);
     var newNode = +id;
     newNode = newNode - 1;
     newNode = newNode + '';
     var before = document.getElementById(newNode);
-    node.insertBefore(target, before);
+    node[0].insertBefore(target, before);
 };
 
 function moveDown(id) {
     if (id === '5') { return }
-    var node = document.getElementById('list');
+    var node = document.getElementsByTagName('ul');
     var target = document.getElementById(id);
     var newNode = +id;
     newNode = newNode + 1;
     newNode = newNode + '';
     var before = document.getElementById(newNode);
-    node.insertBefore(before, target);
+    node[0].insertBefore(before, target);
 };
 
 function InlineFunction(event) {
