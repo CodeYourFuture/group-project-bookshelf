@@ -60,7 +60,7 @@ function moveDown(id) {
     newNode = newNode + 1;
     newNode = newNode + '';
     var before = document.getElementById(newNode);
-    node.insertBefore(target, before);
+    node.insertBefore(before, target);
 };
 
 function InlineFunction(event) {
