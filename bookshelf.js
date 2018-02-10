@@ -46,22 +46,23 @@ function removeBtn() {
 }
 
 function moveUp(id) {
-  console.log("move up" + id)
-  
-  
+  if(id===1){ return}
+  var itm=document.getElementById(id);
+  var originalItm=document.getElementById(id).innerHTML;
+  itm.innerHTML=document.getElementById(id).previousElementSibling.innerHTML;
+  document.getElementById(id).previousElementSibling.innerHTML=originalItm;
 }
 function moveDown(id) {
-  console.log("move down" + id)
   var itm=document.getElementById(id);
-  var itmNext=document.getElementById(id).previousElementSibling.innerHTML
+  if(id===5){ return}
+  var originalItm=document.getElementById(id).innerHTML;
   itm.innerHTML=document.getElementById(id).nextElementSibling.innerHTML;
-  
-  itmNext.innerHTML=itm.innerHTML
+  document.getElementById(id).nextElementSibling.innerHTML=originalItm;
 } 
 
 function myInlineFunc(event) {
-  console.log('myInlineFunc called');
-  console.log('event is: ', event);
+  //console.log('myInlineFunc called');
+  //console.log('event is: ', event);
   if (event.target.textContent === "◭") {
     moveUp(event.target.parentElement.id);
   } else
@@ -78,9 +79,11 @@ function becomeBlue(){
 }
 document.getElementById("button").style.background='#000000' */
 
-var elem=document.getElementsByTagName('button')
-console.log(elem)
+var elem=document.getElementsByTagName('button');
+console.log(elem);
+
 elem.addEventListener("click",buttonFunction);
 function buttonFunction(btn) {
-  btn.style.backgroundColor = "blue";
+   btn.style.backgroundColor = "blue";
+  //btn.style.color = "red";
 }
