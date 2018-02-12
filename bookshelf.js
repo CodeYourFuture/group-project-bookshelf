@@ -1,4 +1,7 @@
-var btn = document.createElement("button");
+
+
+window.bookshelf = (function() {
+  var btn = document.createElement("button");
 btn.setAttribute("id", 'fetch-books-btn');
 var texNode = document.createTextNode('Fetch Books');
 btn.appendChild(texNode);
@@ -36,6 +39,10 @@ function processBooks(booksJSON) {
     listItem.addEventListener("click", myInlineFunc);
   })
   document.body.appendChild(list);
+ /*  var elem=document.getElementsByTagName('button');
+  Array.from(elem).forEach(function(e) {
+    e.addEventListener("click",buttonFunction);
+  }) */
   
 }
 
@@ -68,22 +75,11 @@ function myInlineFunc(event) {
   } else
     moveDown(event.target.parentElement.id);
 }
-/* 
-var elements = document.getElementsByTagName("button");
-console.log(elements)
-elements.addEventListener("click", becomeBlue)
-function becomeBlue(){
-  Array.from(elements).forEach(function(element) {
-    element.style.backgroundColor = "blue";
-  });
-}
-document.getElementById("button").style.background='#000000' */
-
 var elem=document.getElementsByTagName('button');
-console.log(elem);
-
-elem.addEventListener("click",buttonFunction);
-function buttonFunction(btn) {
-   btn.style.backgroundColor = "blue";
-  //btn.style.color = "red";
+Array.from(elem).forEach(function(e) {
+  e.addEventListener("click",buttonFunction);
+})
+function buttonFunction(event) {
+   event.target.style.backgroundColor = "blue";
 }
+}())
