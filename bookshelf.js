@@ -1,13 +1,15 @@
 
 
 window.bookshelf = (function() {
-  var btn = document.createElement("button");
-btn.setAttribute("id", 'fetch-books-btn');
-var texNode = document.createTextNode('Fetch Books');
-btn.appendChild(texNode);
-btn.addEventListener("click", fetchBooks);
-var body = document.getElementsByTagName('body')
-document.body.appendChild(btn);
+  function createBtn() {
+    var btn = document.createElement("button");
+    btn.setAttribute("id", 'fetch-books-btn');
+    var texNode = document.createTextNode('Fetch Books');
+    btn.appendChild(texNode);
+    btn.addEventListener("click", fetchBooks);
+    var body = document.getElementsByTagName('body')
+    document.body.appendChild(btn);
+  }
 function fetchBooks() {
   const booksJSON = 'https://raw.githubusercontent.com/codeyourfuture/bookshelf-project/master/books.json'
   fetch(booksJSON)
@@ -43,15 +45,12 @@ function processBooks(booksJSON) {
   Array.from(elem).forEach(function(e) {
     e.addEventListener("click",buttonFunction);
   }) */
-  
 }
-
 function removeBtn() {
   var rem = document.getElementById("fetch-books-btn")
   rem.removeEventListener("click", fetchBooks);
   btn.remove();
 }
-
 function moveUp(id) {
   if(id===1){ return}
   var itm=document.getElementById(id);
@@ -66,7 +65,6 @@ function moveDown(id) {
   itm.innerHTML=document.getElementById(id).nextElementSibling.innerHTML;
   document.getElementById(id).nextElementSibling.innerHTML=originalItm;
 } 
-
 function myInlineFunc(event) {
   //console.log('myInlineFunc called');
   //console.log('event is: ', event);
@@ -81,5 +79,13 @@ Array.from(elem).forEach(function(e) {
 })
 function buttonFunction(event) {
    event.target.style.backgroundColor = "blue";
+}
+return {
+  init: createBtn,
+  removeBtn,
+  fetchBooks,
+  moveUp,
+  moveDown,
+  processBooks
 }
 }())
