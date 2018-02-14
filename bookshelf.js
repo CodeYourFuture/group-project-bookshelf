@@ -41,25 +41,26 @@ function removeBtn() {
 };
 
 function moveUp(id) {
-    if (id === '1') { return }
+    // if (id === '1') { return }
     var node = document.getElementsByTagName('ul');
     var target = document.getElementById(id);
-    var newNode = +id;
-    newNode = newNode - 1;
-    newNode = newNode + '';
-    var before = document.getElementById(newNode);
-    node[0].insertBefore(target, before);
+    var attr = target.getAttribute('id');
+    var prevId = target.previousSibling;
+    var compare = document.getElementsByTagName('ul')[0].firstChild;
+    var attrprev = compare.getAttribute('id');
+    if (attr === attrprev) { return }
+    node[0].insertBefore(target, prevId);
 };
 
 function moveDown(id) {
-    if (id === '5') { return }
     var node = document.getElementsByTagName('ul');
     var target = document.getElementById(id);
-    var newNode = +id;
-    newNode = newNode + 1;
-    newNode = newNode + '';
-    var before = document.getElementById(newNode);
-    node[0].insertBefore(before, target);
+    var attr = target.getAttribute('id');
+    var nextId = target.nextSibling;
+    var compare = document.getElementsByTagName('ul')[0].lastChild;
+    var attrprev = compare.getAttribute('id');
+    if (attr === attrprev) { return }
+    node[0].insertBefore(nextId, target);
 };
 
 function InlineFunction(event) {
