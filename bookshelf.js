@@ -3,7 +3,7 @@ button1.setAttribute("id", "fetch-books-btn");
 
 var textNode = document.createTextNode("Fetch Books");       // Create a text node
 button1.appendChild(textNode);                                   // Append the text to <button>
-button1.addEventListener ("onClick" , fetchBooks)             //Add event handler
+button1.addEventListener ("click" , fetchBooks)             //Add event handler
 var body = document.getElementsByTagName("body")               // <body><button>id = "fetch-books-btn"</button></body>
 document.body.appendChild(button1);                         // Append <button> to <body>
 
