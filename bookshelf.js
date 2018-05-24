@@ -27,23 +27,33 @@ fetch(booksJSON)
 		/* TODO: create the bookshelf */
 				
 			   var createAulTag = document.createElement('ul');
-			              
-			   document.body.appendChild(createAulTag);
+			     createAulTag.addEventListener("click", function(){
+					
+			
+					var upNdown = event.target.textContent
+					if (upNdown === "↑"){
+						moveUp(event.target.parentElement.id)
+				
+						console.log(upNdown)
+					}
+					else if (upNdown === "↓"){
+						moveDown(event.target.parentElement.id)
+					}
+	console.log(event)
+				 })
+				document.body.appendChild(createAulTag);
 
-			//    var createAliTag =document.createElement('li');
-			//    createAulTag.getElementsByTagName("ul")              
-			//    createAulTag.appendChild(createAliTag);
-			   
-
-		//document.getElementById('1').appendChild(ul);
- 
+			
 		books.forEach(function(book){
 			
-			var li = document.createElement('li');
+			var li = document.createElement('li')
 			li.setAttribute('id', book.id);
 			createAulTag.appendChild(li);
-			li.innerHTML += book.title + ' by ' +  book.author;
+			li.innerHTML += '<button >&uarr;</button>'+ '<button>&darr;</button>'+ book.title + ' by ' +  book.author;
+			
 			console.log(book)
+
+
 		})
 		
      
@@ -57,9 +67,42 @@ function removeBtn(){
 
 		
 	var button1 = document.getElementById("fetch-books-btn")
-	document.getElementById("fetch-books-btn").style.visibility="hidden";
+	//document.getElementById("fetch-books-btn").style.visibility="hidden";
+	button1.remove();
 	button1.removeEventListener ("click", fetchBooks) 
 	
 	
 }
 
+function moveUp(id){
+
+	if(id===1){ return}
+	 var title=document.getElementById(id);
+	 var listOrder=document.getElementById(id).innerHTML;
+	title.innerHTML=document.getElementById(id).previousElementSibling.innerHTML;
+	document.getElementById(id).previousElementSibling.innerHTML=listOrder;
+
+	
+console.log(moveUp);
+
+
+}
+
+function moveDown(id){
+	if(id===5){ return}
+	var title=document.getElementById(id);
+  var listOrder=document.getElementById(id).innerHTML;
+	title.innerHTML=document.getElementById(id).nextElementSibling.innerHTML;
+	document.getElementById(id).nextElementSibling.innerHTML=listOrder;
+	
+	console.log(moveDown, id);
+	
+	}
+	
+// 5. Inside our inline function look at the `event.target.textContent` to determine whether to call `moveUp` or `moveDown`. We will also need to know which book to move so pass `event.target.parentElement.id` to the choosen method.
+
+// Refresh the webpage, click the `Fetch Books` button. We should see our bookshelf complete with buttons to move the books up and down the list.
+
+// 6. Implement the `moveUp` and `moveDown` buttons with what you have learnt from the lesson. You will need to use the [`insertBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore) method.
+
+// ![Solution](assets/solution.gif)
