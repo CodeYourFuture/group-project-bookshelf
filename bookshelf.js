@@ -1,3 +1,7 @@
+window.bookshelf = (function() {
+    /* Our code goes here */
+	
+function createBtn(){
 var button1 = document.createElement("Button");        // Create a <button> element
 button1.setAttribute("id", "fetch-books-btn");
 
@@ -6,7 +10,7 @@ button1.appendChild(buttonText);                                   // Append the
 button1.addEventListener ("click" , fetchBooks)             //Add event handler
 var body = document.getElementsByTagName("body")               // <body><button>id = "fetch-books-btn"</button></body>
 document.body.appendChild(button1);                         // Append <button> to <body>
-
+}
 // function addElement(){
 // 	var parentUl = document.createElement('ul');  // parent document
 // 	var textForList = document.createTextNode('Hello World') //child document
@@ -76,7 +80,7 @@ function removeBtn(){
 
 function moveUp(id){
 
-	if(id===1){ return}
+	if(id==='1'){ return}
 	 var title=document.getElementById(id);
 	 var listOrder=document.getElementById(id).innerHTML;
 	title.innerHTML=document.getElementById(id).previousElementSibling.innerHTML;
@@ -89,20 +93,24 @@ console.log(moveUp);
 }
 
 function moveDown(id){
-	if(id===5){ return}
+	if(id==='5'){ return}
 	var title=document.getElementById(id);
   var listOrder=document.getElementById(id).innerHTML;
 	title.innerHTML=document.getElementById(id).nextElementSibling.innerHTML;
 	document.getElementById(id).nextElementSibling.innerHTML=listOrder;
 	
-	console.log(moveDown, id);
+	console.log(moveDown);
 	
 	}
-	
-// 5. Inside our inline function look at the `event.target.textContent` to determine whether to call `moveUp` or `moveDown`. We will also need to know which book to move so pass `event.target.parentElement.id` to the choosen method.
-
-// Refresh the webpage, click the `Fetch Books` button. We should see our bookshelf complete with buttons to move the books up and down the list.
-
-// 6. Implement the `moveUp` and `moveDown` buttons with what you have learnt from the lesson. You will need to use the [`insertBefore`](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore) method.
-
-// ![Solution](assets/solution.gif)
+	return {
+        init: createBtn
+    }
+return {
+    init: createBtn,
+    removeBtn,
+    fetchBooks,
+    moveUp,
+    moveDown
+    
+}
+}())	
