@@ -13,6 +13,8 @@ if (file.startsWith('window.bookshelf = ')) {
   window.bookshelf = eval(`(function(){ ${file}; return { removeBtn, fetchBooks, processBooks, moveUp, moveDown }}())`)
 }
 
+//
+
 const initialHTML = document.body.innerHTML
 const btnHTML = '<button id="fetch-books-btn">Fetch Books</button>'
 const globalFetch = global.fetch
