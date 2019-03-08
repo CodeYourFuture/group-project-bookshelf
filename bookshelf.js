@@ -22,7 +22,7 @@ window.bookshelf = (function() {
     document.getElementsByTagName("ul")[0].addEventListener("click", event => {
       if (event.target.textContent === "⬆") {
         moveUp(event.target.parentElement.id);
-      } else {
+      } else if (event.target.textContent === "⬇") {
         moveDown(event.target.parentElement.id);
       }
     });
