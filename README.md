@@ -48,7 +48,7 @@ fetch(booksJSON)
     })
 ```
 
-This is the [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) method. We are using it to fetch the books data. It executes asynchronously, meaning that we have to use a promise chain to interact with the data the fetch statement returns.
+This is the [`fetch`](https://developer.mozilla.org/en-US/docs/WebWeb/API/Fetch_API/Using_Fetch) method. We are using it to fetch the books data. It executes asynchronously, meaning that we have to use a promise chain to interact with the data the fetch statement returns.
 
 Refresh the webpage and click the `Fetch Books` button. You should see the books data in the console.
 
