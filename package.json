@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "In this small project we will create a bookshelf that we can interact with.",
   "main": "bookshelf.solution.js",
-  "dependencies": {},
+  "dependencies": {
+    "npm": "^6.8.0"
+  },
   "devDependencies": {
     "jest": "21.2.1"
   },
