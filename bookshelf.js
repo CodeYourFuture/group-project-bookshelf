@@ -1,4 +1,4 @@
-function initateApp(){
+function startApp(){
   var button = setUpFetchButton()
   button.addEventListener("click", fetchBooks);
 }
@@ -71,4 +71,4 @@ function organiseShelf() {
 
 
 
-initateApp()
+startApp()
