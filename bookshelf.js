@@ -1,10 +1,16 @@
-function addTextNode() {
+function initateApp(){
+  var button = setUpFetchButton()
+  button.addEventListener("click", fetchBooks);
+}
+
+function setUpFetchButton() {
   var button = document.createElement("button");
   button.setAttribute(`id`, `fetch-books-btn`);
   document.body.appendChild(button);
   button.appendChild(document.createTextNode(`Fetch Books`));
-  button.addEventListener("click", fetchBooks);
+  return button
 }
+
 
 function fetchBooks() {
   var booksJSON =
@@ -62,4 +68,7 @@ function organiseShelf() {
   });
 }
 
-addTextNode();
+
+
+
+initateApp()
