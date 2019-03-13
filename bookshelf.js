@@ -40,21 +40,19 @@ function removeBtn() {
 }
 
 function moveUp(element) {
-  var parentUl = document.getElementById("book-list");
-
-  if (element.id !== parentUl.childNodes[0].id) {
+  if (element.id !== element.parentElement.firstElementChild.id) {
     return element.parentElement.insertBefore(element, element.previousSibling);
   }
 }
 
 function moveDown(element) {
-  var parentUl = document.getElementById("book-list");
-  if (element.id !== parentUl.lastElementChild.id) {
+  if (element.id !== element.parentElement.lastElementChild.id) {
     return element.parentElement.insertBefore(element.nextSibling, element);
   }
 }
 
 function organiseShelf() {
+  var parentUl = document.getElementById("book-list");
   parentUl.addEventListener("click", function(e) {
     if (e.target.textContent === "⬆") {
       moveUp(e.target.parentElement);
