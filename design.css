@@ -1,0 +1,65 @@
+body {
+    /* background: #dff; */
+    background: #B5B682;
+    width: 100%;
+    padding-top: 30px;
+
+}
+
+.projecthead {
+    display: flex;
+    width: 55%;
+    margin: 10px auto;
+    padding: 5px;
+    color: rgb(32, 18, 14);
+    border: 2px solid #816F68;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
+li {
+    list-style: none;
+}
+
+.projectTitle {
+    flex: 2;
+    /* width: 70%; */
+    font-size: 36px;
+    border-right: 2px solid #FF6F59;
+
+    padding-right: 10px;
+}
+
+.name {
+    flex: 1;
+    padding-top: 22px;
+    color: #FF6F59;
+    font-weight: bolder
+        /* width: 30%; */
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    background: FEDC97;
+    color: rgb(32, 18, 14);
+}
+
+#main {
+    text-align: center;
+}
+
+.deco {
+    width: 40%;
+    line-height: 60px;
+    margin: auto;
+    padding: 20px 0 10px 20px;
+    font-size: 20px;
+    text-align: left;
+    background: rgba(129, 111, 104, 0.459);
+    color: rgb(32, 18, 14);
+    border-radius: 10px;
+}
