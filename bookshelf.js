@@ -1,11 +1,4 @@
 /*
-```html
-<li id="1">
-    <button>⬆</button>
-    <button>⬇</button>
-    - The Catcher in the Rye by J. D. Salinger
-</li>
-```
 2. Create a function named `moveUp` that accepts a parameter called `id` and contains 
 a console log statement that says `move up` followed by the `id`.
 3. Create a similar function named `moveDown`.
@@ -43,7 +36,6 @@ function fetchBooks() {
         document.body.appendChild(unorderedList);
         books.forEach(book => {
             console.log(book)
-
             var unorderedBook = document.createElement("li");
             var upButton = document.createElement("button");
             upButton.innerText = "⬆"; 
@@ -54,10 +46,48 @@ function fetchBooks() {
             unorderedBook.setAttribute("id", book.id);
             unorderedBook.appendChild(document.createTextNode("  -  "+book.title+" by "+book.author))
             document.getElementById("list").appendChild(unorderedBook);
-
-
-        });
+            unorderedList.addEventListener("click", moveBooks);
+        //    unordererBook.innerHTML = `<button>⬆</button> <button>⬇</button> ${book.title} by ${book.author}`
+        })
+    }    
+    function moveBooks(event){
+        if (event.target.textContent === '⬆') {
+            moveUp(event.target.parentElement.id);//`id` of list element which is parent of `clicked-UP-button` 
+        } else if (event.target.textContent === '⬇') {
+            moveDown(event.target.parentElement.id);//`id` of list element which is parent of `clicked-DOWN-button`
+        } else {
+            alert('Click ⬆ or ⬇')//alert the user when clicking out the arrows
+        }
     }
+
+    function moveUp(id){
+        const parentEl = document.querySelector('ul');
+        const targetEl = document.getElementById(id);//accessing the clicked book with the `id`
+        const bookEls = parentEl.children;//all books
+        if (id !=="1"){
+            console.log(id);
+            console.log(parentEl)
+            console.log(document.getElementById(id))
+       //     console.log(bookEls)
+            console.log(document.getElementById(id).previousSibling)
+            parentEl.insertBefore(targetEl, targetEl.previousElementSibling)
+     //       swap(id,id-1);
+        }       
+    }     
+
+    function moveDown(id) {
+        const parentEl = document.querySelector('ul');
+        const targetEl = document.getElementById(id);//accessing the clicked book with the `id`
+        const bookEls = parentEl.children;//all books
+        if (id !== "5") {
+            console.log(id);
+            console.log(parentEl)
+            console.log(document.getElementById(id))
+            console.log(document.getElementById(id).nextSibling)
+            parentEl.insertBefore(targetEl.nextElementSibling, targetEl)
+        }
+    }  
+
     function removeBtn(){
  //     button.removeEventListener("click", fetchBooks);
         button.remove();
