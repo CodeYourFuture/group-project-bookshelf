@@ -40,6 +40,8 @@ var account = {
  */
 var loadButton = document.querySelector("#loadButton");
 
+loadButton.addEventListener("click", fetchBooks);
+
 /**
  * Complete the fetchBooks function so that it calls the fetch function. The
  * account.booksUrl variable should be passed as the first parameter:
@@ -54,7 +56,11 @@ var loadButton = document.querySelector("#loadButton");
  * Then call a function named processBooks and pass the JSON to it.
  */
 function fetchBooks() {
-  // Add your implementation here
+  fetch(account.booksUrl)
+    .then(res => res.json())
+    .then(json => {
+      processBooks(json);
+    });
 }
 
 /**
@@ -72,7 +78,15 @@ function fetchBooks() {
  * Finally the call the render function and pass the account object to it.
  */
 
-// Write your processBooks function here
+function processBooks(allBooks) {
+  let unreadBooks = allBooks.filter(book => !book.isRead);
+  account.unreadBooks = unreadBooks;
+
+  let readBooks = allBooks.filter(book => book.isRead);
+  account.readBooks = readBooks;
+
+  render(account);
+}
 
 /**
  * Complete the render function that updates the DOM with the account details.
@@ -88,7 +102,78 @@ function render(account) {
   var accountEmailNode = document.createTextNode(account.accountEmail);
   document.querySelector("#accountEmail").appendChild(accountEmailNode);
 
-  // Add your implementation here
+  renderUnreadBooks(account.unreadBooks);
+  renderReadBooks(account.readBooks);
+}
+
+function renderUnreadBooks(unreadBooks) {
+  var unreadBooksList = document.querySelector("#unreadBooksList");
+
+  for (unreadBook of unreadBooks) {
+    var unreadBookRowNode = document.createElement("tr");
+
+    var unreadBookTitleNode = document.createElement("td");
+    var unreadBookTitleTextNode = document.createTextNode(unreadBook.title);
+    unreadBookTitleNode.appendChild(unreadBookTitleTextNode);
+
+    var unreadBookAuthorNode = document.createElement("td");
+    var unreadBookAuthorTextNode = document.createTextNode(unreadBook.author);
+    unreadBookAuthorNode.appendChild(unreadBookAuthorTextNode);
+
+    var unreadBookPublishDateNode = document.createElement("td");
+    var unreadBookPublishDateTextNode = document.createTextNode(
+      unreadBook.publishDate
+    );
+    unreadBookPublishDateNode.appendChild(unreadBookPublishDateTextNode);
+
+    unreadBookRowNode.append(
+      unreadBookTitleNode,
+      unreadBookAuthorNode,
+      unreadBookPublishDateNode
+    );
+    unreadBooksList.appendChild(unreadBookRowNode);
+  }
+
+  var unreadBooksCountTextNode = document.createTextNode(unreadBooks.length);
+  var unreadBooksCountNode = document.querySelector("#unreadCount");
+  unreadBooksCountNode.removeChild(unreadBooksCountNode.firstChild);
+  unreadBooksCountNode.appendChild(unreadBooksCountTextNode);
+}
+
+function renderReadBooks(readBooks) {
+  var readBooksList = document.querySelector("#readBooksList");
+
+  for (readBook of readBooks) {
+    var readBookRowNode = document.createElement("tr");
+
+    var readBookTitleNode = document.createElement("td");
+    var readBookTitleTextNode = document.createTextNode(readBook.title);
+    readBookTitleNode.appendChild(readBookTitleTextNode);
+
+    var readBookAuthorNode = document.createElement("td");
+    var readBookAuthorTextNode = document.createTextNode(readBook.author);
+    readBookAuthorNode.appendChild(readBookAuthorTextNode);
+
+    var readBookPublishDateNode = document.createElement("td");
+    var readBookPublishDateTextNode = document.createTextNode(
+      readBook.publishDate
+    );
+    readBookPublishDateNode.appendChild(readBookPublishDateTextNode);
+
+    readBookRowNode.append(
+      readBookTitleNode,
+      readBookAuthorNode,
+      readBookPublishDateNode
+    );
+    readBookRowNode.addEventListener("click", starBook);
+
+    readBooksList.appendChild(readBookRowNode);
+  }
+
+  var readBooksCountTextNode = document.createTextNode(readBooks.length);
+  var readBooksCountNode = document.querySelector("#readCount");
+  readBooksCountNode.removeChild(readBooksCountNode.firstChild);
+  readBooksCountNode.appendChild(readBooksCountTextNode);
 }
 
 /**
@@ -99,3 +184,15 @@ function render(account) {
  * For example, you might want to have functions that find unread/read books,
  * send fetch requests and more.
  */
+
+function starBook(e) {
+  var classList = e.currentTarget.classList;
+
+  if (!classList.contains("starred")) {
+    fetch(account.starUrl, {
+      method: "POST"
+    });
+  }
+
+  classList.toggle("starred");
+}
